@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const fetch = require("node-fetch");
 const rateLimit = require("express-rate-limit");
-//const helmet = require('helmet');
+const helmet = require('helmet');
 
 const app = express();
 
@@ -17,7 +17,7 @@ const corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-//app.use(helmet());
+app.use(helmet());
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(limiter);
