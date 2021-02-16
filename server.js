@@ -13,7 +13,7 @@ const limiter = rateLimit({
 });
 
 const corsOptions = {
-  origin: 'https://almirleandro.github.io',
+  origin: 'https://almirleandr.github.io',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
