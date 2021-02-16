@@ -4,6 +4,8 @@ const cors = require('cors');
 const fetch = require("node-fetch");
 const rateLimit = require("express-rate-limit");
 const helmet = require('helmet');
+const firebase = require('firebase/app');
+require('firebase/firestore');
 
 const app = express();
 
@@ -16,6 +18,17 @@ const corsOptions = {
   origin: 'https://almirleandro.github.io',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
+
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREABSE_KEY,
+  authDomain: process.env.REACT_APP_FIREABSE_DOMAIN,
+  projectId: process.env.REACT_APP_FIREABSE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREABSE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREABSE_SENDER_ID,
+  appId: process.env.REACT_APP_FIREABSE_MESSAGING_APP_ID
+};
+
+firebase.initializeApp(firebaseConfig);
 
 app.use(helmet());
 app.use(express.json());
