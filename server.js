@@ -12,20 +12,14 @@ const limiter = rateLimit({
   max: 3, // limit each IP to 1 requests per windowMs
 });
 
-// const whitelist = ['https://almirleandro.github.io/spoilerzone/']
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true)
-//     } else {
-//       callback(new Error('Not allowed by CORS'))
-//     }
-//   }
-// }
+const corsOptions = {
+  origin: 'https://almirleandro.github.io',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 //app.use(helmet());
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(limiter);
 
 
