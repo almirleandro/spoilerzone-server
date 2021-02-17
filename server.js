@@ -31,7 +31,6 @@ app.use(cors(corsOptions));
 app.use(limiter);
 
 
-
 app.get('/', (req, res) => {
   res.send('Server is running');
 })
