@@ -153,3 +153,27 @@ app.post("/fire/add", async (req, res) => {
 app.listen(process.env.PORT || 3002, () => {
   console.log(`Server is running on port ${process.env.PORT} or 3002`);
 })
+
+
+const interval = 25*60*1000; // interval in milliseconds - {25mins x 60s x 1000}ms
+const url = 'https://spoilerzone-server.herokuapp.com/';
+
+(function wake() {
+
+  try {
+
+    const handler = setInterval(() => {
+
+      fetch(url)
+        .then(res => console.log(`response-ok: ${res.ok}, status: ${res.status}`))
+        .catch(err => console.error(`Error occured: ${err}`))
+
+    }, interval);
+
+  } catch(err) {
+      console.error('Error occured: retrying...');
+      clearInterval(handler);
+      return setTimeout(() => wake(), 10000);
+  };
+
+})();
