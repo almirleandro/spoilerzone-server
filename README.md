@@ -28,6 +28,12 @@ Spoiler Zone uses:
 
 This server was created mainly for security reasons, since no secret key should be used in the front end with React. Notice that this project uses environment variables to store these keys.
 
+All the technical information about movies in [the original website](https://almirleandro.github.io/spoilerzone/) is from The Movie Database API. The API key is stored as an environment variable in Heroku.
+
+The spoilers, on the other hand, are stored in a Firebase database, which is also called from the server, not from the front end. The path for the configuration of the Firebase package is stored as an environment variable too.
+
+CORS, Helmet and Express Rate Limit were used as tools to ensure the security of the server, which, just as the Firebase database, is configured to receive calls only from [the original website](https://almirleandro.github.io/spoilerzone/#/).
+
 ## Launch
 
 In the project directory, you can run:
